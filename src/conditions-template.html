@@ -5,23 +5,29 @@
     ng-mouseover='item.showButtons = true'
     ng-mouseleave='item.showButtons = false'>
     
-      <li><select ng-if='item.isGroup' ng-model="item.groupType">
-        <option value="or">Any of the following conditions</option>
-        <option value="and">All of the following conditions</option>
-      </select></li>
+      <li ng-if='item.isGroup'>
+        <select ng-model="item.groupType">
+          <option value="or">Any of the following conditions</option>
+          <option value="and">All of the following conditions</option>
+        </select>
+      </li>
       
-      <li><select ng-if='!item.isGroup' ng-model="item.type"
-        class="input-medium"
-        ng-change="item.operators = operators[item.type.realtype]; item.operator = item.operators[0];; item.value = undefined;"
-        ng-options="type as type.label for type in types | filter: {shown: true}">
-      </select></li>
+      <li ng-if='!item.isGroup'>
+        <select ng-model="item.type"
+          ng-change="item.operators = operators[item.type.realtype]; item.operator = item.operators[0];; item.value = undefined;"
+          ng-options="type as type.label for type in types | filter: {shown: true}">
+        </select>
+      </li>
       
-      <li><select ng-if='!item.isGroup' ng-model="item.operator"
-        class="input-small"
-        ng-options="operator as operator.label for operator in item.operators">
-      </select></li>
+      <li ng-if='!item.isGroup'>
+        <select ng-model="item.operator"
+          ng-options="operator as operator.label for operator in item.operators">
+        </select>
+      </li>
       
-      <li><input ng-if="!item.isGroup && (item.type.realtype != 'datems')" ng-model='item.value' class="input-medium" type="text"></input></li>
+      <li ng-if="!item.isGroup && (item.type.realtype != 'datems')">
+        <input ng-model='item.value' type="text"></input>
+      </li>
       
       <date-time ng-if="!item.isGroup && (item.type.realtype == 'datems')" value='item.value'></date-time>
   

@@ -28,6 +28,7 @@
       <li ng-if="!item.isGroup && (item.type.realtype != 'datems')">
         <input ng-model='item.value' type="text"></input>
       </li>
+      
       <date-time ng-if="!item.isGroup && (item.type.realtype == 'datems')" value='item.value'></date-time>
   
       <li><button ng-show='item.showButtons' ng-click="addAfter(item)" class="btn" style='font-size:7px;vertical-align:top;'><i class="icon-plus"></i></button></li>

@@ -108,15 +108,14 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
   };
 }])
 
-.directive('editor', ['$syntaxUtils', '$editorUtils', function($syntaxUtils, $editorUtils) {
+.directive('editor', ['$editorUtils', '$syntaxUtils', function($editorUtils, $syntaxUtils) {
   // Runs during compile
   return {
     scope: {types: "=", conditions: '='},
-    controller: function($scope, $element, $attrs) {
+    controller: ['$scope', function($scope) {
       if (!$scope.conditions || !$scope.types) {
         return;
       }
-
       $scope.operators = $syntaxUtils.getOperators();
 
       $scope.newItem = function(parent) {return $editorUtils.newItem(parent, $scope.types);};
@@ -136,7 +135,7 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
         console.log($scope.items);
         $scope.conditions = $syntaxUtils.computeSyntaxTree($scope.items, $scope.realtypes);
       }, true);
-    },
+    }],
     restrict: 'E',
     templateUrl: 'conditions-template.html'
   };
