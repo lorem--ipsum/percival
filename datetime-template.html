@@ -1,17 +1,17 @@
-<span>
+<ul class="forms-inline-list">
   &nbsp;
-  <input ng-model='model.hours' class="input-time-xsmall" ng-class="{true:'in-error', false:''}[invalid.hours]" type="text">
+  <li><input ng-model='model.hours' class="input-time-xsmall" ng-class="{true:'error', false:''}[invalid.hours]" type="text"></li>
   :
-  <input ng-model='model.minutes' class="input-time-xsmall" ng-class="{true:'in-error', false:''}[invalid.minutes]" type="text">
+  <li><input ng-model='model.minutes' class="input-time-xsmall" ng-class="{true:'error', false:''}[invalid.minutes]" type="text"></li>
   :
-  <input ng-model='model.seconds' class="input-time-xsmall" ng-class="{true:'in-error', false:''}[invalid.seconds]" type="text">
+  <li><input ng-model='model.seconds' class="input-time-xsmall" ng-class="{true:'error', false:''}[invalid.seconds]" type="text"></li>
   .
-  <input ng-model='model.milliseconds' class="input-time-small" ng-class="{true:'in-error', false:''}[invalid.milliseconds]" type="text">
+  <li><input ng-model='model.milliseconds' class="input-time-small" ng-class="{true:'error', false:''}[invalid.milliseconds]" type="text"></li>
   &nbsp;
   &nbsp;
-  <input ng-model='model.day' class="input-time-xsmall" ng-class="{true:'in-error', false:''}[invalid.day]" type="text">
+  <li><input ng-model='model.day' class="input-time-xsmall" ng-class="{true:'error', false:''}[invalid.day]" type="text"></li>
   /
-  <input ng-model='model.month' class="input-time-xsmall" ng-class="{true:'in-error', false:''}[invalid.month]" type="text">
+  <li><input ng-model='model.month' class="input-time-xsmall" ng-class="{true:'error', false:''}[invalid.month]" type="text"></li>
   /
-  <input ng-model='model.year' class="input-time-small" ng-class="{true:'in-error', false:''}[invalid.year]" type="text">
-</span>
+  <li><input ng-model='model.year' class="input-time-small" ng-class="{true:'error', false:''}[invalid.year]" type="text"></li>
+</ul>

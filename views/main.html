@@ -11,6 +11,6 @@
     <editor change='ok' types="types" conditions="conditions"></editor>
   </div>
   <div class='unit-50 example'>
-    <pre ng-bind-html-unsafe="conditions | pretty:100:'columns'"></pre>
+    <pre ng-bind-html-unsafe="'$scope.conditions = ' + (conditions | pretty:95:'columns') + ';'"></pre>
   </div>
 </div>

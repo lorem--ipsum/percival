@@ -7,7 +7,6 @@
     <fieldset>
     
       <select ng-if='item.isGroup' ng-model="item.groupType">
-        class="input-xlarge" 
         <option value="or">Any of the following conditions</option>
         <option value="and">All of the following conditions</option>
       </select>
@@ -29,9 +28,9 @@
         <date-time value='item.value'></date-time>
       </span>
   
-      <button ng-show='item.showButtons' ng-click="addAfter(item)" class="pure-button condition-button"><i class="icon-plus"></i></button>
-      <button ng-show='item.showButtons' ng-disabled="$index == 0" ng-click="remove(item)" class="pure-button condition-button"><i class="icon-minus"></i></button>
-      <button ng-show='item.showButtons' ng-click="addGroupAfter(item)" class="pure-button condition-button"><i class="icon-folder-close"></i></button>
+      <button ng-show='item.showButtons' ng-click="addAfter(item)" class="btn" style='font-size:7px;vertical-align:top;'><i class="icon-plus"></i></button>
+      <button ng-show='item.showButtons' ng-disabled="$index == 0" ng-click="remove(item)" class="btn" style='font-size:7px;vertical-align:top;'><i class="icon-minus"></i></button>
+      <button ng-show='item.showButtons' ng-click="addGroupAfter(item)" class="btn" style='font-size:7px;vertical-align:top;'><i class="icon-folder-close"></i></button>
     </fieldset>
   </form>
 </div>

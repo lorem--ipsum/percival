@@ -7,17 +7,29 @@ angular.module('npp', ['ng-boolean-editor', 'apojop'])
 })
 
 .controller('DemoCtrl', function($scope) {
-  $scope.ok = function(c) {
-      $scope.conditions = c;
-  };
-  
   $scope.conditions = {
-    and: []
+    and: [
+      {field: "an_int_field", op: {id: "eq", text: "=="}, rhs: {realtype: "int", value: "qsd"}},
+      {
+        and: [
+          {
+            field: "an_int_field",
+            op: {id: "eq", text: "=="},
+            rhs: {realtype: "int", value: "pouet"}
+          }
+        ]
+      },
+      {
+        field: "an_int_field",
+        op: {id: "eq", text: "=="},
+        rhs: {realtype: "int", value: "tutu"}
+      }
+    ]
   };
   
   $scope.types = [
-    {realtype: 'int', field: 'an_int_field'},
-    {realtype: 'string', field: 'a_string_field'},
-    {realtype: 'datems', field: 'a_date_field'}
+    {realtype: 'int', field: 'an_int_field', label: 'Integer', shown: true},
+    {realtype: 'string', field: 'a_string_field', label: 'String', shown: true},
+    {realtype: 'datems', field: 'a_date_field', label: 'Date', shown: true}
   ];
 });
