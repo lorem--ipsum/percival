@@ -135,7 +135,7 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
 
       $scope.$watch('items', function() {
         $scope.conditions = $syntaxUtils.computeSyntaxTree($scope.items, $scope.realtypes);
-      });
+      }, true);
     },
     restrict: 'E',
     templateUrl: 'conditions-template.html'
