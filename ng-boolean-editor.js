@@ -6,7 +6,7 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
 .directive('dateTime', ['$datetimeutils', function($datetimeutils) {
   return {
     restrict: 'E',
-    replace: true,
+    transclude: true,
     scope: {value: '='},
     link: function($scope) {
       $scope.model = $datetimeutils.dateToModel($scope.value);
@@ -132,8 +132,8 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
       $scope.resetAst();
 
       $scope.items = $syntaxUtils.parseSyntaxTree($scope.conditions, $scope.types);
-
       $scope.$watch('items', function() {
+        console.log($scope.items);
         $scope.conditions = $syntaxUtils.computeSyntaxTree($scope.items, $scope.realtypes);
       }, true);
     },

@@ -13,9 +13,9 @@ angular.module('npp', ['ng-boolean-editor', 'apojop'])
       {
         and: [
           {
-            field: "an_int_field",
-            op: {id: "eq", text: "=="},
-            rhs: {realtype: "int", value: "pouet"}
+            field: "a_date_field",
+            op: {id: "ge", text: ">="},
+            rhs: {realtype: "datems", value: 1381913468593}
           }
         ]
       },
