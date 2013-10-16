@@ -1,4 +1,4 @@
-angular.module('npp', ['ng-boolean-editor', 'apojop'])
+angular.module('npp', ['percival', 'apojop'])
 
 .config(function config($routeProvider) {
   $routeProvider

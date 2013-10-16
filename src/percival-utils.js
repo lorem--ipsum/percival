@@ -1,4 +1,80 @@
-angular.module('ng-boolean-editor.utils', [])
+angular.module('percival-utils', [])
+
+.factory('$datetimeutils', function() {
+  return {
+    same: function(model, date) {
+      return this.modelToDate(model) === date;
+    },
+
+    dateToModel: function(ms) {
+      var date = ms ? new Date(ms) : new Date();
+      return {
+        hours: date.getHours(),
+        minutes: date.getMinutes(),
+        seconds: date.getSeconds(),
+        milliseconds: date.getMilliseconds(),
+        day: date.getDate(),
+        month: date.getMonth() + 1,
+        year: date.getFullYear()
+      };
+    },
+
+    modelToDate: function(model) {
+      var d = new Date();
+
+      d.setHours(+model.hours);
+      d.setMinutes(+model.minutes);
+      d.setSeconds(+model.seconds);
+      d.setMilliseconds(+model.milliseconds);
+      d.setDate(+model.day);
+      d.setMonth(+model.month - 1);
+      d.setFullYear(+model.year);
+
+      return d.getTime();
+    }
+  };
+})
+
+.factory('$editorUtils', ['$syntaxUtils', function($syntaxUtils) {
+  return {
+    newItem: function(parent, types) {
+      return {
+        level: parent.isGroup ? parent.level + 1 : parent.level,
+        type: types[0],
+        operators: $syntaxUtils.getOperators()[types[0].realtype],
+        operator: $syntaxUtils.getOperators()[types[0].realtype][0]
+      };
+    },
+
+    getBlankAst: function() {
+      return [{groupType: 'and', isGroup: true, level: 0}];
+    },
+
+    removeItem: function(item, items) {
+      var itemIndex = items.indexOf(item);
+
+      if (itemIndex <= 0) {
+        return;
+      }
+
+      items.splice(itemIndex, $syntaxUtils.getChildrenCount(item, items) + 1);
+    },
+
+    addAfter: function(item, items, types) {
+      items.splice(items.indexOf(item) + 1, 0, this.newItem(item, types));
+    },
+
+    addGroupAfter: function(parent, items) {
+      var group = {
+        isGroup: true,
+        groupType: 'and',
+        level: parent.isGroup ? parent.level + 1 : parent.level
+      };
+
+      items.splice(items.indexOf(parent) + 1, 0, group);
+    }
+  };
+}])
 
 .factory('$syntaxUtils', function() {
   var _operatorsByType = {

@@ -1,7 +1,7 @@
 describe('directive', function() {
   var elm, scope, isolatedScope;
 
-  beforeEach(module('ng-boolean-editor'));
+  beforeEach(module('percival'));
   
   beforeEach(module('conditions-template.html'));
   beforeEach(module('datetime-template.html'));

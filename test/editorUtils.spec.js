@@ -1,6 +1,6 @@
-describe('ng-boolean-editor', function() {
+describe('$editorUtils', function() {
   
-  beforeEach(module("ng-boolean-editor"));
+  beforeEach(module("percival-utils"));
   
   var items, types;
   
