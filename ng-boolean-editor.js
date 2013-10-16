@@ -111,7 +111,7 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
 .directive('editor', ['$syntaxUtils', '$editorUtils', function($syntaxUtils, $editorUtils) {
   // Runs during compile
   return {
-    scope: {types: "=", conditions: '=', onOk: '&', change: '&'},
+    scope: {types: "=", conditions: '='},
     controller: function($scope, $element, $attrs) {
       if (!$scope.conditions || !$scope.types) {
         return;
@@ -129,20 +129,13 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
         return {'padding-left': 30 * item.level + 'px'};
       };
 
-      $scope.getAst = function() {
-        return $syntaxUtils.computeSyntaxTree($scope.items, $scope.realtypes);
-      };
-
       $scope.resetAst();
 
       $scope.items = $syntaxUtils.parseSyntaxTree($scope.conditions, $scope.types);
 
       $scope.$watch('items', function() {
-        if ($scope.change) {
-          $scope.change()($scope.getAst());
-        }
+        $scope.conditions = $syntaxUtils.computeSyntaxTree($scope.items, $scope.realtypes);
       });
-
     },
     restrict: 'E',
     templateUrl: 'conditions-template.html'
