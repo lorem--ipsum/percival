@@ -15,6 +15,20 @@ angular.module('ng-boolean-editor.utils', [])
       return _operatorsByType;
     },
 
+    getChildrenCount: function(item, items) {
+      var index = items.indexOf(item);
+      var count = 0;
+      var currentLevel = item.level;
+
+      while(index + 1 < items.length && items[index + 1].level > item.level) {
+        currentLevel = items[index].level;
+        index++;
+        count++;
+      }
+
+      return count;
+    },
+
     getIndexOfLastChild: function(item, items) {
       var index = items.indexOf(item);
       var currentLevel = item.level;

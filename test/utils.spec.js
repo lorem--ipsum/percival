@@ -28,7 +28,7 @@ describe('ng-boolean-editor.utils', function() {
       expect($syntaxUtils.getIndexOfLastChild(items[8], items)).toBe(8);
     }));
     
-    it('should deal with an item which has children', inject(function($syntaxUtils) {
+    it('should deal with an item with children', inject(function($syntaxUtils) {
       expect($syntaxUtils.getIndexOfLastChild(items[9], items)).toBe(11);
     }));
     
@@ -38,6 +38,46 @@ describe('ng-boolean-editor.utils', function() {
     
     it('should deal with the last item', inject(function($syntaxUtils) {
       expect($syntaxUtils.getIndexOfLastChild(items[11], items)).toBe(11);
+    }));
+  });
+
+  describe('getChildrenCount function', function() {
+    var items;
+    
+    beforeEach(function() {
+      items = [
+        {level: 0}, // #0
+          {level: 1}, // #1
+            {level: 2}, // #2
+            {level: 2}, // #3
+          {level: 1}, // #4
+            {level: 2}, // #5
+            {level: 2}, // #6
+              {level: 3}, // #7
+          {level: 1}, // #8
+          {level: 1}, // #9
+            {level: 2}, // #10
+            {level: 2}, // #11
+        {level: 0}, // #12
+        {level: 0}, // #13
+        {level: 0} // #14
+      ];
+    });
+    
+    it('should deal with a lone item', inject(function($syntaxUtils) {
+      expect($syntaxUtils.getChildrenCount(items[8], items)).toBe(0);
+    }));
+    
+    it('should deal with an item with children', inject(function($syntaxUtils) {
+      expect($syntaxUtils.getChildrenCount(items[9], items)).toBe(2);
+    }));
+    
+    it('should deal with the first item', inject(function($syntaxUtils) {
+      expect($syntaxUtils.getChildrenCount(items[0], items)).toBe(11);
+    }));
+    
+    it('should deal with the last item', inject(function($syntaxUtils) {
+      expect($syntaxUtils.getChildrenCount(items[11], items)).toBe(0);
     }));
   });
   

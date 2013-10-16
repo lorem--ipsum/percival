@@ -85,11 +85,11 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
     removeItem: function(item, items) {
       var itemIndex = items.indexOf(item);
 
-      if (itemIndex < 0) {
+      if (itemIndex <= 0) {
         return;
       }
 
-      items.splice(itemIndex, $syntaxUtils.getIndexOfLastChild(item, items));
+      items.splice(itemIndex, $syntaxUtils.getChildrenCount(item, items) + 1);
     },
 
     addAfter: function(item, items, types) {
@@ -155,6 +155,20 @@ angular.module('ng-boolean-editor.utils', [])
   return {
     getOperators: function() {
       return _operatorsByType;
+    },
+
+    getChildrenCount: function(item, items) {
+      var index = items.indexOf(item);
+      var count = 0;
+      var currentLevel = item.level;
+
+      while(index + 1 < items.length && items[index + 1].level > item.level) {
+        currentLevel = items[index].level;
+        index++;
+        count++;
+      }
+
+      return count;
     },
 
     getIndexOfLastChild: function(item, items) {

@@ -117,6 +117,27 @@ describe('ng-boolean-editor', function() {
               {type: 'foo_value', operator: 'eq', value: 'gnogno', level: 2}
         ]);
       }));
+      
+      it('should remove the proper item', inject(function($editorUtils) {
+        items = [
+          {groupType: 'and', isGroup: true, level: 0},
+            {groupType: 'or', isGroup: true, level: 1},
+              {type: 'bar_value', operator: 'eq', value: 'alt', level: 2},
+              {type: 'bar_value', operator: 'eq', value: 'tab', level: 2},
+            {groupType: 'and', isGroup: true, level: 1},
+              {type: 'foo_value', operator: 'eq', value: 'gnogno', level: 2}
+        ];
+        
+        $editorUtils.removeItem(items[2], items);
+        
+        expect(items).toEqual([
+          {groupType: 'and', isGroup: true, level: 0},
+            {groupType: 'or', isGroup: true, level: 1},
+              {type: 'bar_value', operator: 'eq', value: 'tab', level: 2},
+            {groupType: 'and', isGroup: true, level: 1},
+              {type: 'foo_value', operator: 'eq', value: 'gnogno', level: 2}
+        ]);
+      }));
     });
   });
 });
