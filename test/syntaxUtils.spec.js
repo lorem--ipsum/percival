@@ -1,5 +1,5 @@
-describe('ng-boolean-editor.utils', function() {
-  beforeEach(module("ng-boolean-editor.utils"));
+describe('$syntaxtUtils', function() {
+  beforeEach(module("percival-utils"));
   
   describe('getIndexOfLastChild function', function() {
     var items;

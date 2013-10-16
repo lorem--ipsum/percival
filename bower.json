@@ -1,12 +1,12 @@
 {
-  "name": "ng-boolean-editor",
+  "name": "percival",
   "version": "1.0.0-beta",
-  "homepage": "https://github.com/lorem--ipsum/ng-boolean-editor",
+  "homepage": "https://github.com/lorem--ipsum/percival",
   "authors": [
     "lorem--ipsum <vaporzub@gmail.com>"
   ],
   "description": "A boolean syntax tree editor for AngularJS",
-  "main": "dist/ng-boolean-editor.min.js",
+  "main": "dist/percival.min.js",
   "keywords": [
     "angularjs",
     "boolean",
