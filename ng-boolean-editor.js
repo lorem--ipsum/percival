@@ -123,6 +123,7 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
       $scope.remove = function(item) {$editorUtils.removeItem(item, $scope.items);};
       $scope.addAfter = function(item) {$editorUtils.addAfter(item, $scope.items, $scope.types);};
       $scope.addGroupAfter = function(parent) {$editorUtils.addGroupAfter(parent, $scope.items);};
+      $scope.getChildrenCount = $syntaxUtils.getChildrenCount;
 
       $scope.getStyle = function(item) {
         return {'padding-left': 30 * item.level + 'px'};
