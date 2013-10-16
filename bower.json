@@ -16,12 +16,17 @@
     "tree"
   ],
   "license": "MIT",
+  
   "ignore": [
     "**/.*",
-    "node_modules",
     "bower_components",
+    "coverage",
+    "node_modules",
+    "src",
     "test",
-    "tests"
+    "Gruntfile.js",
+    "karma.conf.js",
+    "package.js"
   ],
   "devDependencies": {
     "angular": "~1.0.6",

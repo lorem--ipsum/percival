@@ -52,7 +52,7 @@ module.exports = function(grunt) {
         expand: true,
         cwd: 'src/',
         src: '*.html',
-        dest: 'dist/'
+        dest: './'
       }
     },
 
@@ -63,11 +63,7 @@ module.exports = function(grunt) {
       },
       js: {
         src: ['src/*.js'],
-        dest: 'dist/<%= pkg.name %>.js'
-      },
-      html: {
-        src: ['src/*.html'],
-        dest: 'dist/<%= pkg.name %>.html'
+        dest: '<%= pkg.name %>.js'
       },
       test: {
         src: ['test/*.spec.js'],
@@ -81,7 +77,7 @@ module.exports = function(grunt) {
       },
       js: {
         src: '<%= concat.js.dest %>',
-        dest: 'dist/<%= pkg.name %>.min.js'
+        dest: '<%= pkg.name %>.min.js'
       }
     },
 

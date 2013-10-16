@@ -28,7 +28,7 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
       }, true);
 
     },
-    templateUrl: 'pages/datetime-template.html'
+    templateUrl: 'datetime-template.html'
   };
 }])
 
@@ -111,14 +111,12 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
 .directive('editor', ['$syntaxUtils', '$editorUtils', function($syntaxUtils, $editorUtils) {
   // Runs during compile
   return {
-    scope: {table: "=", onOk: '&'},
+    scope: {types: "=", conditions: '=', onOk: '&', onChange: '&'},
     controller: function($scope, $element, $attrs) {
-      if (!$scope.table) {
+      if (!$scope.conditions || !$scope.types) {
         return;
       }
 
-      $scope.types = $scope.table.ast.display.outputs;
-      $scope.conditions = $scope.table.ast.display.conditions;
       $scope.operators = $syntaxUtils.getOperators();
 
       $scope.newItem = function(parent) {return $editorUtils.newItem(parent, $scope.types);};
@@ -139,9 +137,15 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
 
       $scope.items = $syntaxUtils.parseSyntaxTree($scope.conditions, $scope.types);
 
+      $scope.$watch('items', function() {
+        if ($scope.onChange) {
+          $scope.onChange()($scope.getAst());
+        }
+      });
+
     },
     restrict: 'E',
-    templateUrl: 'pages/conditions-template.html'
+    templateUrl: 'conditions-template.html'
   };
 }]);
 angular.module('ng-boolean-editor.utils', [])

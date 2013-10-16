@@ -8,12 +8,12 @@ files = [
   JASMINE_ADAPTER,
   'bower_components/angular/angular.js',
   'bower_components/angular-mocks/angular-mocks.js',
-  'dist/ng-boolean-editor.min.js',
+  'ng-boolean-editor.min.js',
   '/tmp/ng-boolean-editor.spec.js'
 ];
 
 preprocessors = {
-  'dist/ng-boolean-editor.min.js': 'coverage'
+  'ng-boolean-editor.min.js': 'coverage'
 };
 
 // list of files to exclude
