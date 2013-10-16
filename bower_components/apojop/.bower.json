@@ -1,0 +1,33 @@
+{
+  "name": "apojop",
+  "main": "apojop.min.js",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "coverage",
+    "node_modules",
+    "src",
+    "test",
+    "Gruntfile.js",
+    "karma.conf.js",
+    "package.js"
+  ],
+  "dependencies": {
+    "angular": "~1.0.6"
+  },
+  "devDependencies": {
+    "angular": "~1.0.6",
+    "angular-mocks": "~1.0.6"
+  },
+  "homepage": "https://github.com/lorem--ipsum/apojop",
+  "_release": "master",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "849233f2996ac09597d42b0d895d0f39300c12d1"
+  },
+  "_source": "git://github.com/lorem--ipsum/apojop.git",
+  "_target": "*",
+  "_originalSource": "apojop",
+  "_direct": true
+}

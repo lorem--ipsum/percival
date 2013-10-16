@@ -28,7 +28,7 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
       }, true);
 
     },
-    templateUrl: 'pages/datetime-template.html'
+    templateUrl: 'dist/datetime-template.html'
   };
 }])
 
@@ -111,14 +111,12 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
 .directive('editor', ['$syntaxUtils', '$editorUtils', function($syntaxUtils, $editorUtils) {
   // Runs during compile
   return {
-    scope: {table: "=", onOk: '&'},
+    scope: {types: "=", conditions: '=', onOk: '&'},
     controller: function($scope, $element, $attrs) {
-      if (!$scope.table) {
+      if (!$scope.types || !$scope.conditions) {
         return;
       }
 
-      $scope.types = $scope.table.ast.display.outputs;
-      $scope.conditions = $scope.table.ast.display.conditions;
       $scope.operators = $syntaxUtils.getOperators();
 
       $scope.newItem = function(parent) {return $editorUtils.newItem(parent, $scope.types);};
@@ -141,7 +139,7 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
 
     },
     restrict: 'E',
-    templateUrl: 'pages/conditions-template.html'
+    templateUrl: 'dist/conditions-template.html'
   };
 }]);
 angular.module('ng-boolean-editor.utils', [])
@@ -187,6 +185,7 @@ angular.module('ng-boolean-editor.utils', [])
 
     parseSyntaxItem: function(syntaxItem, level, types) {
       var type = types.filter(function(t) {return t.field === syntaxItem.field;})[0];
+      
       var operators = _operatorsByType[type.realtype];
       var operator = operators.filter(function(o) {return syntaxItem.op.id === o.value;})[0];
 

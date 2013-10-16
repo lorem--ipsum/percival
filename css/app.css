@@ -1,0 +1,67 @@
+body {
+  width: 90%;
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+h3 {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #aaaaaa;
+  /*border-bottom: 1px solid #e3e3e3;*/
+}
+
+h4 {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #369;
+  /*border-bottom: 1px solid #e3e3e3;*/
+}
+
+p {
+  font-family: 'Libre Baskerville', serif;
+}
+
+acc {
+  color: #999999;
+  border-bottom: 1px solid;
+}
+
+/* HEADER */
+#header {
+  padding-top: 15px;
+  margin-bottom: .6em;
+}
+#header h1 {
+  float: left;
+  font-size: 32px;
+  margin-top: 1px;
+  margin-bottom: 0;
+  color: rgba(0, 0, 0, .8);
+}
+#header nav {
+  margin-top: 1.2em;
+  margin-bottom: 0;
+  float: right;
+}
+
+#header>h1>a {
+  text-decoration: none;
+  color: #77777;
+}
+
+#header>h1>a>img {
+  vertical-align: top;
+}
+
+.example {
+  font-size: 11px;
+  /*overflow-y: auto;*/
+  /*height: 500px;*/
+  max-height: 500px;
+  padding: 10px;
+  margin-bottom: 20px; 
+  border-radius: .5em;
+  border: 1px solid #e3e3e3;
+}

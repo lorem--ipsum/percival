@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="npp">
+<head>
+  <title>Boolean Editor for AngularJS</title>
+  
+  <!-- Various CSS -->
+  <link rel="stylesheet" type="text/css" href="css/kube.min.css"/>
+  <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+  
+  <!-- Font -->
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+  <!-- Project CSS -->
+  <link rel="stylesheet" type="text/css" href="css/app.css"/>
+  
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body>
+  <div class="units-row">
+    <div class='unit-100'>
+      <header id="header" class="group">
+        
+        <h1>ng-boolean-editor</h1>
+        <nav class="nav-g">
+          <ul>
+            <li><a href="http://github.com/lorem--ipsum/ng-boolean-editor">Github <i class='icon-external-link'></i></a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+    <h3>Abstract Syntax Tree Interactive Editor for AngularJS</h3>
+  </div>
+  <div class="units-row">
+    <div class='units-row' ng-view></div>
+  </div>
+</body>
+<!-- AngularJS -->
+<script type="text/javascript" src="bower_components/angular-unstable/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/apojop/apojop.min.js"></script>
+
+<!-- Project libs -->
+<script type="text/javascript" src="dist/ng-boolean-editor.js"></script>
+<script type="text/javascript" src="scripts/app.js"></script>
+</html>
