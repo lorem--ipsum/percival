@@ -217,18 +217,27 @@ angular.module('percival', ['percival-utils'])
       $scope.addAfter = function(item) {$editorUtils.addAfter(item, $scope.items, $scope.types);};
       $scope.addGroupAfter = function(parent) {$editorUtils.addGroupAfter(parent, $scope.items);};
       $scope.getChildrenCount = $syntaxUtils.getChildrenCount;
-
-      $scope.getStyle = function(item) {
-        return {'padding-left': 30 * item.level + 'px'};
-      };
-
+      
       $scope.resetAst();
 
       $scope.items = $syntaxUtils.parseSyntaxTree($scope.conditions, $scope.types);
+      
+      $scope.updateBounds = function(item) {
+        if (item) {
+          $scope.min_children_index = $scope.items.indexOf(item);
+          $scope.max_children_index = $scope.min_children_index + $scope.getChildrenCount(item, $scope.items);
+        } else {
+          $scope.min_children_index = $scope.max_children_index = undefined;
+        }
+      };
 
       $scope.$watch('items', function() {
         $scope.conditions = $syntaxUtils.computeSyntaxTree($scope.items, $scope.realtypes);
+        $scope.updateBounds($scope.hoveredItem);
       }, true);
+      
+      // here
+      $scope.$watch('hoveredItem', $scope.updateBounds);
     }],
     restrict: 'E',
     templateUrl: 'conditions-template.html'
