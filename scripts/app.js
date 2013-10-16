@@ -8,12 +8,12 @@ angular.module('npp', ['ng-boolean-editor', 'apojop'])
 
 .controller('DemoCtrl', function($scope) {
   $scope.ok = function(c) {
-    $scope.conditions = c;
+      $scope.conditions = c;
   };
   
   $scope.conditions = {
-        and: []
-      };
+    and: []
+  };
   
   $scope.types = [
     {realtype: 'int', field: 'an_int_field'},
