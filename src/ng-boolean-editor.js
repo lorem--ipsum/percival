@@ -82,11 +82,11 @@ angular.module('ng-boolean-editor', ['ng-boolean-editor.utils'])
     removeItem: function(item, items) {
       var itemIndex = items.indexOf(item);
 
-      if (itemIndex < 0) {
+      if (itemIndex <= 0) {
         return;
       }
 
-      items.splice(itemIndex, $syntaxUtils.getIndexOfLastChild(item, items));
+      items.splice(itemIndex, $syntaxUtils.getChildrenCount(item, items) + 1);
     },
 
     addAfter: function(item, items, types) {
