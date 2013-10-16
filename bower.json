@@ -1,0 +1,30 @@
+{
+  "name": "ng-boolean-editor",
+  "version": "1.0.0-beta",
+  "homepage": "https://github.com/lorem--ipsum/ng-boolean-editor",
+  "authors": [
+    "lorem--ipsum <vaporzub@gmail.com>"
+  ],
+  "description": "A boolean syntax tree editor for AngularJS",
+  "main": "dist/ng-boolean-editor.min.js",
+  "keywords": [
+    "angularjs",
+    "boolean",
+    "ast",
+    "abstract",
+    "syntax",
+    "tree"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.0.6",
+    "angular-mocks": "~1.0.6"
+  }
+}

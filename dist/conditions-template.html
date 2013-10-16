@@ -1,0 +1,41 @@
+<div ng-repeat="item in items" class='condition' ng-style="getStyle(item)">
+  
+  <!-- Group -->
+  <form class="pure-form"
+    ng-mouseover='item.showButtons = true'
+    ng-mouseleave='item.showButtons = false'>
+    <fieldset>
+    
+      <select ng-if='item.isGroup' ng-model="item.groupType">
+        class="input-xlarge" 
+        <option value="or">Any of the following conditions</option>
+        <option value="and">All of the following conditions</option>
+      </select>
+      
+      <select ng-if='!item.isGroup' ng-model="item.type"
+        class="input-medium"
+        ng-change="item.operators = operators[item.type.realtype]; item.operator = item.operators[0];; item.value = undefined;"
+        ng-options="type as type.label for type in types | filter: {shown: true}">
+      </select>
+      
+      <select ng-if='!item.isGroup' ng-model="item.operator"
+        class="input-small"
+        ng-options="operator as operator.label for operator in item.operators">
+      </select>
+      
+      <input ng-if="!item.isGroup && (item.type.realtype != 'datems')" ng-model='item.value' class="input-medium" type="text"></input>
+      
+      <span ng-if="!item.isGroup && (item.type.realtype == 'datems')">
+        <date-time value='item.value'></date-time>
+      </span>
+  
+      <button ng-show='item.showButtons' ng-click="addAfter(item)" class="pure-button condition-button"><i class="icon-plus"></i></button>
+      <button ng-show='item.showButtons' ng-disabled="$index == 0" ng-click="remove(item)" class="pure-button condition-button"><i class="icon-minus"></i></button>
+      <button ng-show='item.showButtons' ng-click="addGroupAfter(item)" class="pure-button condition-button"><i class="icon-folder-close"></i></button>
+    </fieldset>
+  </form>
+  
+</div>
+
+<button ng-click='resetAst()' class='pure-button pure-button-xsmall'><i class="icon-remove"></i> Reset</button>
+<button ng-click='onOk()(getAst())' class='pure-button pure-button-xsmall pure-button-success'><i class="icon-ok"></i> Send</button>
