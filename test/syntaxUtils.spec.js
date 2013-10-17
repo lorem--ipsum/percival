@@ -1,4 +1,4 @@
-describe('$syntaxtUtils', function() {
+describe('$syntaxUtils', function() {
   beforeEach(module("percival-utils"));
   
   describe('getIndexOfLastChild function', function() {

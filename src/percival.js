@@ -12,7 +12,7 @@ angular.module('percival', ['percival-utils'])
       $scope.operators = $syntaxUtils.getOperators();
 
       $scope.newItem = function(parent) {return $editorUtils.newItem(parent, $scope.types);};
-      $scope.remove = function(item) {$editorUtils.removeItem(item, $scope.items);};
+      $scope.remove = function(item) {$editorUtils.removeItem(item, $scope.items); $scope.hoveredItem = undefined;};
       $scope.addAfter = function(item) {$editorUtils.addAfter(item, $scope.items, $scope.types);};
       $scope.addGroupAfter = function(parent) {$editorUtils.addGroupAfter(parent, $scope.items);};
       $scope.getChildrenCount = $syntaxUtils.getChildrenCount;

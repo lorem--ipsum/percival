@@ -5,7 +5,7 @@ module.exports = function(config) {
     files: [
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'percival.min.js',
+      'percival.js',
       '/tmp/percival.spec.js',
       '*.html'
     ],
@@ -23,7 +23,7 @@ module.exports = function(config) {
     
     preprocessors: {
       '*.html': ['ng-html2js'],
-      'percival.min.js': ['coverage']
+      'percival.js': ['coverage']
     },
     
     frameworks: ['jasmine']

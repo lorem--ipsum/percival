@@ -7,7 +7,7 @@ A boolean syntax tree editor for AngularJS. A demo is available [here](http://lo
 It's a directive that allows the user to edit boolean expression, just like the Apple iTunes smart playlists creator.
 
 ### What does it do ? ###
-It take an Abstract Syntax Tree :
+It takes an Abstract Syntax Tree :
 ```js
 var ast = {
   or: [
@@ -72,7 +72,7 @@ $scope.ast = {
 }
 ```
 
-You can also give an empty object : `{}`.
+You can also give an empty object : `{}`. Percival will create an empty root group for you.
 
 ### Tests ###
 It is well-tested thanks to Karma, PhantomJS, and Jasmine.
