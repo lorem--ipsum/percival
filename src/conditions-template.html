@@ -7,7 +7,7 @@
   <form class="forms-inline-list perciform"
     ng-mouseover='$parent.hoveredItem = item;'
     ng-mouseleave='$parent.hoveredItem = undefined;'
-    ng-class="{true:'hovered', false:''}[$index >= min_children_index && $index <= max_children_index]"
+    ng-class="{true:'dimmed', false:''}[$index < min_children_index || $index > max_children_index]"
     >
     <li ng-if='item.isGroup'>
       <select ng-model="item.groupType">
