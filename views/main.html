@@ -1,20 +1,31 @@
 <div class="units-row">
   <div class='unit-50'>
-  <h4>What's that ?</h4>
+    <h4>What's that ?</h4>
     <p>Percival is an AngularJS directive that offers an user-friendly editor for logical expressions. It reads from and writes to an Abstract Syntax Tree, nothing less, nothing more.</p>
-  <h4>How can I use it ?</h4>
-  <p>Look below : on the left, there is the directive in action. Add, remove, edit whatever you want, and look at the right. There is the model, updated in real time thanks to the <a href="assets/magic.gif">AngularJS magic</a>.</p>
-  <p></p>
+    <h4>How can I use it ?</h4>
+    <p>Look below : on the left, there is the directive in action. Add, remove, edit whatever you want, and look at the right. There is the model, updated in real time thanks to the <a href="assets/magic.gif">AngularJS magic</a>.</p>
+    <p></p>
   </div>
   <div class='unit-50'>
-    
+
   </div>
 </div>
 <div class="units-row">
-  <div class='unit-50 example'>
-    <editor change='ok' types="types" conditions="conditions"></editor>
+
+  <div class='unit-50'>
+    <span class='label label-data'>Percival</span>
+    <div class='unit-100 example'>
+      <editor change='ok' types="types" conditions="conditions" expression="exp"></editor>
+    </div>
   </div>
-  <div class='unit-50 example'>
-    <pre ng-bind-html-unsafe="'$scope.conditions = ' + (conditions | pretty:95:'columns') + ';'"></pre>
+  <div class='unit-50'>
+    <span class='label label-data'>Abstract Syntax Tree</span>
+    <div class='unit-100 example'>
+    <pre class='apojop' ng-bind-html-unsafe="'$scope.conditions = ' + (conditions | pretty:95:'columns') + ';'"></pre>
+    </div>
+    <span class='label label-data'>Boolean expression</span>
+    <div class='unit-100 example'>
+      <pre>{{exp}}</pre>
+    </div>
   </div>
 </div>

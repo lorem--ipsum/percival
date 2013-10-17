@@ -56,13 +56,12 @@ acc {
 .example {
   font-size: 11px;
   background-color: rgba(0, 0, 0, 0);
-  max-height: 500px;
   padding: 10px;
   margin-bottom: 20px; 
   border-radius: .5em;
   border: 1px solid #e3e3e3;
 }
 
-pre {
-  background-color: rgba(0, 0, 0, 0);
+pre.apojop {
+  max-height: 500px;
 }
