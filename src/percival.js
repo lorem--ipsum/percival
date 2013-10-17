@@ -1,9 +1,9 @@
 angular.module('percival', ['percival-utils'])
 
-.directive('editor', ['$editorUtils', '$syntaxUtils', function($editorUtils, $syntaxUtils) {
+.directive('editor', ['$editorUtils', '$stringUtils', '$syntaxUtils', function($editorUtils, $stringUtils, $syntaxUtils) {
   // Runs during compile
   return {
-    scope: {types: "=", conditions: '='},
+    scope: {types: "=", conditions: '=', expression: '=?'},
     controller: ['$scope', function($scope) {
       if (!$scope.conditions || !$scope.types) {
         return;
@@ -12,7 +12,7 @@ angular.module('percival', ['percival-utils'])
       $scope.operators = $syntaxUtils.getOperators();
 
       $scope.newItem = function(parent) {return $editorUtils.newItem(parent, $scope.types);};
-      $scope.remove = function(item) {$editorUtils.removeItem(item, $scope.items);};
+      $scope.remove = function(item) {$editorUtils.removeItem(item, $scope.items); $scope.hoveredItem = undefined;};
       $scope.addAfter = function(item) {$editorUtils.addAfter(item, $scope.items, $scope.types);};
       $scope.addGroupAfter = function(parent) {$editorUtils.addGroupAfter(parent, $scope.items);};
       $scope.getChildrenCount = $syntaxUtils.getChildrenCount;
@@ -34,6 +34,7 @@ angular.module('percival', ['percival-utils'])
 
       $scope.$watch('items', function() {
         $scope.conditions = $syntaxUtils.computeSyntaxTree($scope.items, $scope.realtypes);
+        $scope.expression = $stringUtils.toExpression($scope.conditions);
         $scope.updateBounds($scope.hoveredItem);
       }, true);
 
@@ -48,7 +49,7 @@ angular.module('percival', ['percival-utils'])
 .directive('dateTime', ['$datetimeutils', function($datetimeutils) {
   return {
     restrict: 'E',
-    transclude: true,
+    // transclude: true,
     scope: {value: '='},
     link: function($scope) {
       $scope.model = $datetimeutils.dateToModel($scope.value);
