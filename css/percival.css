@@ -5,20 +5,21 @@ select {
 
 form.perciform {
   border-radius: 15px;
-  padding: 8px!important;
+  padding: 8px 8px 6px 8px!important;
 }
 
-form.perciform.hovered {
-  background-color: rgba(192, 57, 43, 0.26);
-  -webkit-transition: background-color 50ms linear;
-  -moz-transition: background-color 50ms linear;
-  -o-transition: background-color 50ms linear;
-  -ms-transition: background-color 50ms linear;
-  transition: background-color 50ms linear;
+form.perciform.dimmed {
+  opacity: 0.5;
+  
+  -webkit-transition: opacity 50ms linear;
+     -moz-transition: opacity 50ms linear;
+      -ms-transition: opacity 50ms linear;
+       -o-transition: opacity 50ms linear;
+          transition: opacity 50ms linear;
   
   -webkit-transition-delay: 1s;
-  -moz-transition-delay: 1s;
-  -o-transition-delay: 1s;
-  -ms-transition-delay: 1s;
-  transition-delay: 1s;
+     -moz-transition-delay: 1s;
+      -ms-transition-delay: 1s;
+       -o-transition-delay: 1s;
+          transition-delay: 1s;
 }
