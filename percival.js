@@ -1,4 +1,4 @@
-/*! percival - v1.0.0-beta - 2013-10-16
+/*! percival - v1.0.0-beta - 2013-10-17
 * https://github.com/lorem--ipsum/percival
 * Copyright (c) 2013 Lorem Ipsum  Licensed ,  */
 angular.module('percival-utils', [])
@@ -217,11 +217,11 @@ angular.module('percival', ['percival-utils'])
       $scope.addAfter = function(item) {$editorUtils.addAfter(item, $scope.items, $scope.types);};
       $scope.addGroupAfter = function(parent) {$editorUtils.addGroupAfter(parent, $scope.items);};
       $scope.getChildrenCount = $syntaxUtils.getChildrenCount;
-      
+
       $scope.resetAst();
 
       $scope.items = $syntaxUtils.parseSyntaxTree($scope.conditions, $scope.types);
-      
+
       $scope.updateBounds = function(item) {
         if (item) {
           $scope.min_children_index = $scope.items.indexOf(item);
@@ -235,7 +235,7 @@ angular.module('percival', ['percival-utils'])
         $scope.conditions = $syntaxUtils.computeSyntaxTree($scope.items, $scope.realtypes);
         $scope.updateBounds($scope.hoveredItem);
       }, true);
-      
+
       // here
       $scope.$watch('hoveredItem', $scope.updateBounds);
     }],
