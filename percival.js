@@ -89,7 +89,23 @@ angular.module('percival-utils', [])
     ]
   };
 
+  var isEmpty = function(o) {
+    for (var key in o) {
+      if (o.hasOwnProperty(key)) return false;
+    }
+
+    return true;
+  };
+
   return {
+    isValidAst: function(ast) {
+      if (isEmpty(ast)) {
+        return false;
+      }
+
+      return true;
+    },
+
     getOperators: function() {
       return _operatorsByType;
     },
@@ -209,18 +225,20 @@ angular.module('percival', ['percival-utils'])
       if (!$scope.conditions || !$scope.types) {
         return;
       }
+
       $scope.operators = $syntaxUtils.getOperators();
 
       $scope.newItem = function(parent) {return $editorUtils.newItem(parent, $scope.types);};
-      $scope.resetAst = function() {$scope.items = $editorUtils.getBlankAst();};
       $scope.remove = function(item) {$editorUtils.removeItem(item, $scope.items);};
       $scope.addAfter = function(item) {$editorUtils.addAfter(item, $scope.items, $scope.types);};
       $scope.addGroupAfter = function(parent) {$editorUtils.addGroupAfter(parent, $scope.items);};
       $scope.getChildrenCount = $syntaxUtils.getChildrenCount;
 
-      $scope.resetAst();
-
-      $scope.items = $syntaxUtils.parseSyntaxTree($scope.conditions, $scope.types);
+      if ($syntaxUtils.isValidAst($scope.conditions)) {
+        $scope.items = $syntaxUtils.parseSyntaxTree($scope.conditions, $scope.types);
+      } else {
+        $scope.items = $editorUtils.getBlankAst();
+      }
 
       $scope.updateBounds = function(item) {
         if (item) {
