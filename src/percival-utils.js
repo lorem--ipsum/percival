@@ -86,7 +86,23 @@ angular.module('percival-utils', [])
     ]
   };
 
+  var isEmpty = function(o) {
+    for (var key in o) {
+      if (o.hasOwnProperty(key)) return false;
+    }
+
+    return true;
+  };
+
   return {
+    isValidAst: function(ast) {
+      if (isEmpty(ast)) {
+        return false;
+      }
+
+      return true;
+    },
+
     getOperators: function() {
       return _operatorsByType;
     },

@@ -7,7 +7,7 @@
   <form class="forms-inline-list perciform"
     ng-mouseover='$parent.hoveredItem = item;'
     ng-mouseleave='$parent.hoveredItem = undefined;'
-    ng-class="{true:'dimmed', false:''}[$index < min_children_index || $index > max_children_index]"
+    ng-class="{true:'hovered', false:''}[$index >= min_children_index && $index <= max_children_index]"
     >
     <li ng-if='item.isGroup'>
       <select ng-model="item.groupType">
@@ -18,7 +18,7 @@
     
     <li ng-if='!item.isGroup'>
       <select ng-model="item.type"
-        ng-change="item.operators = operators[item.type.realtype]; item.operator = item.operators[0];; item.value = undefined;"
+        ng-change="item.operators = operators[item.type.realtype]; item.operator = item.operators[0]; item.value = undefined;"
         ng-options="type as type.label for type in types | filter: {shown: true}">
       </select>
     </li>
@@ -39,7 +39,7 @@
     <li><button ng-show='item == hoveredItem' ng-disabled="$index == 0" ng-click="remove(item)" class="btn" style='font-size:7px;vertical-align:top;'><i class="icon-minus"></i></button></li>
     <li><button ng-show='item == hoveredItem' ng-click="addGroupAfter(item)" class="btn" style='font-size:7px;vertical-align:top;'><i class="icon-folder-close"></i></button></li>
     
-    <li ng-show='item.isGroup && getChildrenCount(item, items) === 0' style='color: #c0392b;'>
+    <li ng-show='item.isGroup && getChildrenCount(item, items) == 0' style='color: #c0392b;'>
       No children for this group
     </li>
   </form>
